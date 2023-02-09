@@ -1,0 +1,28 @@
+.ranking_game{
+    margin-bottom:60px;
+}
+.ranking_game_title{
+    margin-bottom:5px;
+}
+
+.ranking_game_title .title{
+    margin-bottom:5px;
+    padding-left:5px;
+    border-left:5px solid #0067ff;
+}
+
+.ranking_table_cont{
+    background:#a689899c;
+    border-radius:4px;
+    padding:20px;
+}
+
+.ranking_table_head{
+    background:#928080a8;
+}
+
+.ranking_table_foot{
+    background:#fccd4096;
+    padding 4px;
+    margin-top:5px;
+}

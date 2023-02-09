@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% load filters %}
+
+{% block stylesheet %}
+<link href="{% static 'css/mypage/ranking.css' %}" rel = "stylesheet">
+{% endblock%}
+
+{% block explain_contents %}
+<div>
+  <div>
+    <h1>명예의 전당</h1>
+  </div>
+  <div style="padding:10px;">
+    {% for game in games %}
+    <div class="ranking_game" style="margin-bottom:70px">
+      <div class="ranking_game_title" style="margin-bottom:5px;">
+        <h5 class="title">{{game.title}}</h5>
+      </div>
+      <div class="ranking_table_cont">
+        <table class="table table-borderless table-sm text-white">
+          <thead class="ranking_table_head">
+          <tr>
+            <th class="th-sm">순위</th>
+            <th class="th-sm">계정</th>
+            <th class="th-sm">점수</th>
+            <th class="th-sm">세부점수</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for value in ranking|get_ranking:game.id %}
+          <tr>
+            <td>{{value.ranking}}</td>
+            <td>{{value.user_id}}</td>
+            <td>{{value.total}}</td>
+            <td>{{value.score_data}}</td>
+          </tr>
+          {%empty%}
+          <tr>
+            <td colspan="4">등록된 내용이 없습니다.</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+          <tfoot >
+          {% for value in myrank|get_my_rank:game.id %}
+            <tr class="ranking_table_foot">
+              <td>{{value.ranking}}</td>
+              <td>{{value.user_id}}</td>
+              <td>{{value.total}}</td>
+              <td>{{value.score_data}}</td>
+            </tr>
+            {%empty%}
+            <tr>
+              <td colspan="4">등록된 내용이 없습니다.</td>
+            </tr>
+          {% endfor %}
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock explain_contents%}

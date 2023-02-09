@@ -1,0 +1,62 @@
+{% extends "users.html" %}
+{% load static %}
+{%block u_title %}회원가입{%endblock%}
+{% block u_stylesheet %}
+<link href="{% static 'css/users/users.css' %}" rel="stylesheet">
+{% endblock%}
+{% block u_header %}
+<script src="{% static 'js/users.js' %}"></script>
+{% endblock u_header%}
+
+{% block users_contents %}
+<div class="row login_body">
+  <div class="col-lg-2 col-md-1 col-sm-0"></div>
+  <div class="col-lg-8 col-md-10 col-sm-12">
+    <div class="login_div " align="center" style="background:white">
+
+      <div class="login_cont">
+        <div class="text-dark">
+          <h3>회원가입</h3>
+          <form action="{% url 'users:register' %}" method="post">
+            {% csrf_token %}
+            <div class="login_input_cont">
+              <p class="login_input_title text-dark">아이디</p>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" name="userid" id="userid" maxlength="50" value="{{form.userid}}">
+              </div>
+              {% if error == 'id' %}
+              <p style="color:red;">이미 사용중인 아이디입니다.</p>
+              {% endif %}
+            </div>
+            <div class="login_input_cont">
+              <p class="login_input_title text-dark">패스워드</p>
+              <div class="input-group mb-3">
+                <input type="password" class="form-control" name="passwrd" id="passwrd" maxlength="50" value="{{form.passwrd}}">
+              </div>
+            </div>
+            <div class="login_input_cont">
+              <p class="login_input_title text-dark">패스워드 확인</p>
+              <div class="input-group mb-3">
+                <input type="password" class="form-control" name="passwrd_chk" id="passwrd_chk" maxlength="50" >
+              </div>
+            </div>
+            <div class="login_input_cont">
+              <p class="login_input_title text-dark">이메일</p>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" name="email" id="email" maxlength="50" value="{{form.email}}">
+              </div>
+            </div>
+            <div >
+                <a class="btn btn-secondary" type="button" href="{% url 'users:login'%}">뒤로가기</a>
+                &nbsp;&nbsp;
+                <button class="btn btn-primary" type="submit">가입하기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-md-1 col-sm-0"></div>
+</div>
+{% endblock %}
+

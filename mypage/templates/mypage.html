@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stylesheet %}
+<link href="{% static 'css/mypage/mypage.css' %}" rel = "stylesheet">
+{% endblock%}
+
+{% block explain_contents %}
+<div>
+  <div>
+    <h1>my page</h1>
+  </div>
+  <div style="padding:10px;">
+    {% for key, value in mypages.items %}
+    <div style="margin-bottom:10px;">
+      <div class="mypage_date_title" >
+       <h5 class="title">{{key}}</h5>
+      </div>
+      <div class="mypage_cont row">
+        {% for datas in value %}
+        <div class="mypage_cont_wrap col-6">
+          <div class="mypage_cont_img" style="width:50px;height:50px;background-size:cover;background-repeat:no-repeat;background-image:url('/static/img/{{datas.game.img_src}}')">
+          </div>
+          <div class="mypage_cont_text">
+            {{datas.game.title}}
+            <div class="mypage_cont_score">
+            {% for key, score in datas.scores.items %}
+              <p>{{key}} : {{score}}</p>
+              &nbsp;&nbsp;
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock explain_contents%}

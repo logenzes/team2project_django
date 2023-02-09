@@ -1,0 +1,25 @@
+.mypage_date_title{
+   margin-bottom:5px;
+
+}
+.mypage_date_title .title{
+    padding-left:5px;
+    border-left:5px solid #0067ff;
+}
+
+.mypage_cont{
+   background:#625555;
+}
+.mypage_cont_wrap{
+    display:flex;
+    padding:10px;
+}
+
+.mypage_cont_img{
+    margin-right : 10px;
+    border-radius: 4px;
+}
+
+.mypage_cont_score{
+    display:flex;
+}

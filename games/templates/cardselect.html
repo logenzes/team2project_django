@@ -1,0 +1,29 @@
+{% load static %}
+{% block stylesheet %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/3.0.3/sweetalert2.min.css" />
+<link href="{% static 'css/cardselect.css' %}" rel = "stylesheet">
+{% endblock%}
+{% block header %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/sweetalert2/3.0.3/sweetalert2.min.js"></script>
+<script src="{% static 'js/cardselect.js' %}"></script>
+{% endblock header%}
+{% block explaing_contents %}
+<div class="cardselect_body">
+    <div class="cardsleect_wrap">
+        <div id="score-panel">
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+            </ul>
+            <span class="moves">0</span> Moves
+            <div class="restart">
+                <i class="fa fa-repeat"></i>
+            </div>
+        </div>
+        <ul class="deck"></ul>
+    </div>
+</div>
+{% endblock%}

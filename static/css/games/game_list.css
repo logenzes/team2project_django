@@ -1,0 +1,17 @@
+.game_list_cont{
+    padding:20px;
+    margin:20px;
+    background:#806c6c;
+    border-radius:4px;
+}
+.game_list_title{
+    margin-bottom:5px;
+}
+
+.game_list_description{
+    margin-top :5px;
+    font-size:1.2rem;
+    padding:10px;
+    background:#907c7c;
+    border-radius:4px;
+}

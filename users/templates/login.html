@@ -1,0 +1,70 @@
+{% extends "users.html" %}
+{% load static %}
+{%block u_title %}로그인{%endblock%}
+<!--style-->
+{% block u_stylesheet %}
+<link href="{% static 'css/users/users.css' %}" rel="stylesheet">
+{% endblock%}
+{% block u_header %}
+<script src="{% static 'js/users.js' %}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock u_header%}
+
+{% block users_contents %}
+<div class="row login_body">
+
+  <div class="col-lg-2 col-md-1 col-sm-0">
+  </div>
+  <div class="login_div col-lg-8 col-md-10 col-sm-12">
+    <div class="login_cont" align="center">
+      <div>
+        {% if error == 'check_info' %}
+          <p style="color:red;">아이디와 비밀번호를 확인해주세요</p>
+        {% endif %}
+        <form action="." method="post">
+          {% csrf_token %}
+          <div class="login_monitor">
+            <div class="login_wrap" style="">
+              <div class="login_input_cont">
+                <p class="login_input_title">아이디</p>
+                <div class="input-group mb-3">
+                  <input type="text"  class="form-control" placeholder="아이디" name="userid" id="userid" value="{{form.userid}}">
+                </div>
+              </div>
+              <div class="login_input_cont">
+                <p class="login_input_title">비밀번호</p>
+                <div class="input-group mb-3">
+                  <input type="password"  class="form-control" placeholder="비밀번호" name="passwrd" id="passwrd" value="{{form.userid}}">
+                </div>
+              </div>
+
+              <div>
+                <button type="submit" value="로그인" class="btn btn-dark " style="width:20%;">로 그 인</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="login_monitor_bottom">
+          <div class="plus">
+             <i class="fa fa-plus" aria-hidden="true"></i>
+          </div>
+          <div class="join">
+            <button class="btn btn-light" onclick="location.href='{% url 'users:register' %}'" >회 원 가 입</button>
+          </div>
+          <div class="btngrp">
+            <div class="a">
+              <i class="fa fa-circle text-danger" aria-hidden="true"></i>
+            </div>
+            <div class="b">
+              <i class="fa fa-circle text-primary" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-md-1 col-sm-0">
+  </div>
+</div>
+
+{% endblock %}

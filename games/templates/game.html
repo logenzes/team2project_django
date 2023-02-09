@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block explain_contents %}
+<div align="center">
+  {% include game.game_html%}
+</div>
+<div style="">
+  <form action="{% url 'games:game_view' game.id %}" method="post" style="display:none">
+      {% csrf_token %}
+      <input type="text" id="game_id" name="game_id" value="{{game.id}}">
+      <input type="text" id="user_id" name="user_id"  value="{{user.userid}}">
+      <input type="text" id="score_value" name="score_value">
+      <input type="submit" id="submit_button">
+  </form>
+</div>
+
+{% endblock explain_contents%}

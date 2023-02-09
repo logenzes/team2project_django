@@ -1,0 +1,26 @@
+{% block explain_contents %}
+<div>
+  <input value=1 readonly id="score">
+  <button onclick="scoreup()">스코어</button>
+</div>
+
+<script>
+  function scoreup(){
+    let score = Number(document.getElementById("score").value);
+    console.log(score);
+    if(score > 13){
+      data = {'score':score};
+      data = JSON.stringify(data);
+      console.log(data);
+      document.getElementById("score_value").value = data;
+      document.getElementById("submit_button").click();
+    }else{
+      score += 1;
+      document.getElementById("score").value = score
+    }
+
+  }
+
+
+</script>
+{% endblock %}

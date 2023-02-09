@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stylesheet %}
+<link href="{% static 'css/games/game_list.css' %}" rel = "stylesheet">
+{% endblock%}
+{% block explain_contents %}
+<div>
+  <div>
+    <h2>게임목록</h2>
+    <span>원하는 게임을 선택해주세요.</span>
+  </div>
+  <div class="row" style="padding:10px" >
+    {%for game in games%}
+      <div class="col-5 game_list_cont" onclick="location.href='{% url 'games:game_view' game.id%}'">
+        <div class="game_list_title">
+            <h3>{{game.title}}</h3>
+        </div>
+        <div style="height:400px;background-size:cover;background-repeat:no-repeat;background-image:url('/static/img/{{game.img_src}}')">
+        </div>
+        <div class="game_list_description">
+            {{game.description}}
+        </div>
+      </div>
+      {% empty %}
+      <div>
+        <h3>등록된 게임이 없습니다.</h3>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock explain_contents%}
